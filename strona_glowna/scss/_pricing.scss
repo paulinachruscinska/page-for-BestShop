@@ -1,0 +1,213 @@
+.container {
+  width: 1352px;
+  margin: 0 auto;
+  background: $color-white;
+
+  @media (max-width: 1352px){
+    width:100%;
+  }
+}
+.pricing{
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 1.5rem;
+}
+.pricing_box {
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  @include desktop {
+    flex-direction: row;
+  }
+}
+.pricing_h {
+  font-size: 2.25rem;
+  line-height: 2.625rem;
+  font-family: $font-family-raleway;
+  margin: 3.125rem auto;
+  text-align: center;
+  @include desktop {
+    margin: 4.25rem auto;
+  }
+}
+.pricing__box{
+  height: 15.6875rem;
+  width: 18.3125rem;
+  margin-bottom: 3.375rem;
+  border-radius: 1.125rem;
+  border: 1px solid black;
+
+  @include desktop {
+    height: 28.8125rem;
+    //width: 23.25rem;
+  }
+}
+.pricing__basic{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-color: $color-redish;
+  position: relative;
+
+  @include desktop {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.pricing__professional {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-color: $color-primary;
+  position: relative;
+
+  @include desktop {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.pricing__premium {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-color: $color-green;
+  position: relative;
+
+  @include desktop {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.pricing__basic:hover, .pricing__basic:active, .pricing__professional:hover, .pricing__professional:active, .pricing__premium:hover, .pricing__premium:active {
+  transform: scale(1.02);
+
+}
+.pricing__basic:hover, .pricing__basic:active, .pricing__basic .btn:hover, .pricing__basic .btn:active{
+  box-shadow: 5px 10px 27px $color-shadow-red;
+}
+.pricing__professional:hover, .pricing__professional:active, .pricing__professional .btn:hover, .pricing__professional .btn:active{
+  box-shadow: 5px 10px 27px $color-primary-shadow-button;
+}
+.pricing__premium:hover, .pricing__premium:active, .pricing__premium .btn:hover, .pricing__premium .btn:active{
+  box-shadow: 5px 10px 27px $color-green;
+}
+
+.btn{
+  text-align: center;
+  width: 9.375rem;
+  height: 3.125rem;
+  border-radius: 23px;
+  display: block;
+  position:absolute;
+  bottom:0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-decoration: none;
+  color: $color-white;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  box-sizing: border-box;
+  padding-top: calc((3.125rem - 0.8125rem) / 2);
+}
+.pricing__basic .btn{
+  background: $color-redish;
+}
+.pricing__professional .btn {
+  background: $color-primary;
+}
+.pricing__premium .btn{
+  background: $color-green;
+}
+.pricing__box--text-primary {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: $font-family-raleway;
+  text-align: center;
+
+  @include desktop {
+    margin: 1.125rem auto 0.875rem;
+  }
+}
+.pricing__box-price {
+  font-size: 2.875rem;
+  font-weight: 300;
+  padding: 0.5625rem 0;
+  text-align: center;
+  display: block;
+  @include desktop{
+  margin-bottom: 1.5625rem;
+  }
+}
+.pricing__basic .pricing__box-price{
+  color: $color-redish;
+
+  @include desktop {
+    padding-bottom: 3.75rem;
+  }
+}
+.pricing__professional .pricing__box-price {
+  color: $color-primary;
+
+  @include desktop {
+    padding-bottom: 3.75rem;
+  }
+}
+.pricing__premium .pricing__box-price {
+  color: $color-green;
+
+  @include desktop {
+    padding-bottom: 3.75rem;
+  }
+}
+.pricing__professional .pricing__box-price::after, .pricing__premium .pricing__box-price::after{
+  content: "Limited offer";
+  margin: 0.3125rem auto;
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: $font-family-raleway;
+  color: $color-black;
+}
+.pricing__box--ul{
+  max-height: 100%;
+}
+.pricing__box--ul li {
+  display: block;
+  text-align: left;
+  margin: 1.25rem auto;
+
+  @include desktop{
+    text-align: center;
+  }
+}
+.pricing__box--ul .pricing__box--li-yes::before {
+  content:"";
+  box-sizing: border-box;
+  height: 11px;
+  width: 11px;
+  border-radius: 2px;
+  border: 1px solid $color-green;
+  background-image: url("../images/Checkmark.svg");
+  background-size: 6px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 0.8125rem;
+  display: inline-block;
+
+}
+.pricing__box--ul .pricing__box--li-no::before {
+  content: "";
+  height: 11px;
+  width: 11px;
+  background-image: url("../images/Close.svg");
+  background-repeat: no-repeat;
+  margin-right: 0.8125rem;
+  display: inline-block;
+}
