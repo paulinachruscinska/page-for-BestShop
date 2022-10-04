@@ -1085,6 +1085,139 @@ textarea {
   display: inline-block;
 }
 
+.calculator {
+  box-sizing: border-box;
+  background-color: #F7F7F7;
+  display: flex;
+  justify-content: center;
+  height: 538px;
+}
+.calculator .container__calculator {
+  width: 865px;
+}
+.calculator .container__calculator .calculator__header {
+  margin: 5.4375rem auto 3.25rem;
+  text-align: center;
+  font-size: 2.25rem;
+  line-height: 2.625rem;
+}
+.calculator .container__calculator .calculator-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select, .calculator .container__calculator .calculator-section .calculator__form .calculator__form--input {
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  width: 440px;
+  height: 40px;
+  margin-bottom: 1.25rem;
+  padding: 0.6875rem 1.25rem;
+  font-size: 0.8125rem;
+  border: 1px solid #08A6E4;
+  box-shadow: 0 3px 6px rgba(7, 172, 230, 0.1607843137);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select:focus, .calculator .container__calculator .calculator-section .calculator__form .calculator__form--input:focus {
+  border: 2px solid #08A6E4;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select {
+  position: relative;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select:after {
+  content: "";
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  right: 2%;
+  top: 15%;
+  background-image: url("../images/Arrow Down.svg");
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select .select-ul {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid #FB3B64;
+  border-radius: 6px;
+  top: 50px;
+  left: 0;
+  width: 440px;
+  background-color: #FFFFFF;
+  z-index: 1;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select .select-ul .select-li {
+  padding: 1rem 1.25rem;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select .select-ul .select-li:hover {
+  background-color: #F7F7F7;
+  border-radius: 6px;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__checkbox .calculator__checkbox--square {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__checkbox .calculator__checkbox--newsquare {
+  border: 1px solid #A5A5A5;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__checkbox .calculator__checkbox--newsquare:hover {
+  background-color: #A5A5A5;
+  border-radius: 6px;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__checkbox .calculator__checkbox--text {
+  height: 1.5rem;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+.calculator .container__calculator .calculator-section .calculator__form .calculator__checkbox .calculator__checkbox--square:checked + .calculator__checkbox--newsquare {
+  background: url("../images/Checkmark.svg") no-repeat center #A5A5A5;
+}
+.calculator .container__calculator .calculator-section .calculator__calculatedforms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.calculator .container__calculator .calculator-section .calculator__calculatedforms .calculator__calculatedforms--item {
+  background-color: #55DFB4;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px #F7F7F7;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.375rem 1.25rem;
+  width: 385px;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+.calculator .container__calculator .calculator-section .calculator__calculatedforms .calculator__summary {
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  margin-top: 0.875rem;
+  background-color: #08A6E4;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5625rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px #F7F7F7;
+  width: 179px;
+  text-align: center;
+}
+
+.notactive {
+  display: none;
+}
+
+.notvisible {
+  visibility: hidden;
+}
+
 .container {
   width: 1352px;
   margin: 0 auto;
