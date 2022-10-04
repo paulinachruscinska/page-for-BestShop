@@ -161,6 +161,76 @@
     </section>
     </div>
 </section>
+<section class="calculator">
+    <div class="container__calculator">
+        <p class="calculator__header">Calculate how much you’ll pay</p>
+        <div class="calculator-section">
+            <form class="calculator__form">
+                <label>
+                    <input  class="calculator__form--input" type="number" name="products" placeholder="Products quantity" min="1">
+                </label>
+                <label>
+                    <input  class="calculator__form--input" type="number" name="orders" placeholder="Estimated orders in month" min="1">
+                </label>
+                <div class="calculator__form--select">
+                    <div class="calculator__form--input-select">
+                        <p>Choose package<p>
+                        <ul class="select-ul notactive">
+                            <li class="select-li">Basic</li>
+                            <li class="select-li">Professional</li>
+                            <li class="select-li">Premium</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="checkboxes">
+                    <div class="checkbox-accounting">
+                        <label class="calculator__checkbox">
+                            <input class="calculator__checkbox--square" type="checkbox">
+                            <span class="calculator__checkbox--newsquare"></span>
+                            <span class="calculator__checkbox--text">Accounting</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-rental">
+                        <label class="calculator__checkbox">
+                            <input class="calculator__checkbox--square" type="checkbox">
+                            <span class="calculator__checkbox--newsquare"></span>
+                            <span class="calculator__checkbox--text">Rental of a payment terminal</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <section class="calculator__calculatedforms">
+                <div class="calculator__calculatedforms--item" id="products">
+                    <p>Products</p>
+                    <p></p>
+                    <p><strong></strong></p>
+                </div>
+                <div class="calculator__calculatedforms--item" id="orders">
+                    <p>Orders</p>
+                    <p></p>
+                    <p><strong></strong></p>
+                </div>
+                <div class="calculator__calculatedforms--item notvisible" id="package">
+                    <p>Package</p>
+                    <p class="type-of-package"></p>
+                    <p class="package-price"><strong></strong></p>
+                </div>
+                <div class="calculator__calculatedforms--item notvisible" id="accounting">
+                    <p>Accounting</p>
+                    <p><strong>35</strong></p>
+                </div>
+                <div class="calculator__calculatedforms--item notvisible" id="terminal">
+                    <p>Terminal</p>
+                    <p>5</p>
+                </div>
+                <div class="calculator__summary">
+                    <p>Total</p>
+                    <p></p>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
 <section class="contact">
     <div class="container">
         <section class="contact__">
