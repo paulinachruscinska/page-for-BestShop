@@ -8,7 +8,7 @@ const prices = {
         premium: 60
     },
     accounting: 35,
-    terminal: 5
+    terminal: 50
     }
 
 
