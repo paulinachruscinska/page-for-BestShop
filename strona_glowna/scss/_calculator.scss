@@ -31,6 +31,9 @@
           box-shadow: 0 3px 6px $color-primary-shadow-button;
           border-radius: 6px;
           cursor: pointer;
+          &:focus{
+            border:2px solid $color-primary;
+          }
         }
         .calculator__form--select{
           position: relative;
@@ -44,7 +47,6 @@
             background-image: url("../images/Arrow Down.svg");
           }
           .select-ul{
-            display: none;
             position: absolute;
             box-sizing: border-box;
             border: 1px solid $color-redish;
@@ -127,4 +129,10 @@
       }
     }
   }
+}
+.notactive{
+  display: none;
+}
+.notvisible{
+  visibility: hidden;
 }

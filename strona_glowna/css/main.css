@@ -1119,6 +1119,9 @@ textarea {
   border-radius: 6px;
   cursor: pointer;
 }
+.calculator .container__calculator .calculator-section .calculator__form .calculator__form--select:focus, .calculator .container__calculator .calculator-section .calculator__form .calculator__form--input:focus {
+  border: 2px solid #08A6E4;
+}
 .calculator .container__calculator .calculator-section .calculator__form .calculator__form--select {
   position: relative;
 }
@@ -1132,7 +1135,6 @@ textarea {
   background-image: url("../images/Arrow Down.svg");
 }
 .calculator .container__calculator .calculator-section .calculator__form .calculator__form--select .select-ul {
-  display: none;
   position: absolute;
   box-sizing: border-box;
   border: 1px solid #FB3B64;
@@ -1206,6 +1208,14 @@ textarea {
   box-shadow: 0 3px 6px #F7F7F7;
   width: 179px;
   text-align: center;
+}
+
+.notactive {
+  display: none;
+}
+
+.notvisible {
+  visibility: hidden;
 }
 
 .container {
