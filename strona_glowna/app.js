@@ -1,4 +1,6 @@
 'use strict';
+const totalPrices = [5, 6, 8 ];
+console.log(totalPrices);
 const prices = {
     products: 0.5,
     orders: 0.25,
@@ -12,21 +14,38 @@ const prices = {
     }
 
 
-//calculator-calculatedforms--item
+//products
 const products = document.querySelector('#products');
-const productQuantityInput = document.querySelector('.calculator__form--input');
-console.log(productQuantityInput);
-console.log(productQuantityInput.textContent)
-if(productQuantityInput.textContent==undefined){
-    products.classList.add('notvisible');
+const productQuantityInput = document.querySelector('#productsquantity');
+const quantityProduct = products.children.item(1);
+const quantityProductTotal = products.children.item(2);
+const changeInput=()=>{
+    quantityProduct.textContent = productQuantityInput.value;
+    quantityProductTotal.textContent = parseFloat(productQuantityInput.value ) * parseFloat(prices.products);
+
+    if (productQuantityInput.value.length>0){
+        products.classList.remove('notvisible')
+    } else {
+        products.classList.add('notvisible')
+    }
 }
-
-
-
-// products.children.item(1).textContent= productsInputInfo + " * $" + prices.products;
-// products.children.item(2).innerHTML= `${productsInputInfo * prices.products}`;
-
+productQuantityInput.addEventListener('change', changeInput)
+//orders
 const orders = document.querySelector('#orders');
+const quantityOrder = orders.children.item(1);
+const quantityOrderTotal = orders.children.item(2);
+const ordersInput = document.querySelector('.calculator__form').children.item(1).firstElementChild;
+const changeOrder=()=>{
+    quantityOrder.textContent = ordersInput.value;
+    quantityOrderTotal.textContent = parseFloat(quantityOrder.textContent)*parseFloat(prices.orders)
+    totalPrices.push(parseFloat(quantityOrderTotal.textContent));
+    if (ordersInput.value.length>0){
+        orders.classList.remove('notvisible')
+    } else {
+        orders.classList.add('notvisible')
+    }
+}
+ordersInput.addEventListener('change', changeOrder)
 const packages = document.querySelector('#package');
 const accounting = document.querySelector('#accounting');
 const terminal = document.querySelector('#terminal');
@@ -37,7 +56,7 @@ console.log(accounting);
 console.log(terminal);
 
 
-const ordersInput = document.querySelector('.calculator__form').children.item(1).firstElementChild;
+
 console.log(ordersInput);
 
 //select
@@ -51,6 +70,13 @@ function handleClick(event){
     p.textContent=event.target.textContent;
     p.textContent!=="Choose package"?packages.classList.remove('notvisible'): null;
     typeOfPackage.textContent=event.target.textContent;
+    if( p.textContent === 'Basic'){
+        totalPrices.push(prices.package.basic)
+    } else if (p.textContent === "Professional"){
+        totalPrices.push(prices.package.professional)
+    } else if(p.textContent === "Premium"){
+        totalPrices.push(prices.package.premium)
+    }
     if(typeOfPackage.textContent==='Basic'){
         priceOfPackage.textContent = prices.package.basic
     } else if(typeOfPackage.textContent==="Professional"){
@@ -67,7 +93,6 @@ const checkboxAccounting = document.querySelector('.calculator__checkbox--newsqu
 const checkboxTerminal = document.querySelector('.checkbox-rental .calculator__checkbox--newsquare')
 console.log(checkboxAccounting);
 const handleCLickCheckbox1=()=>{
-    console.log('kliknieto');
     accounting.classList.contains('notvisible')?accounting.classList.remove('notvisible'):accounting.classList.add('notvisible');
 }
 const handleClickCheckbox2=()=>{
@@ -75,3 +100,14 @@ const handleClickCheckbox2=()=>{
 }
 checkboxAccounting.addEventListener('click', handleCLickCheckbox1);
 checkboxTerminal.addEventListener('click', handleClickCheckbox2);
+
+//summary
+const calculatorSummary =document.querySelector(".calculator__summary");
+const summary = calculatorSummary.children.item(1)
+const sum =(array) => {
+    const sum1 = array.reduce((partialSum, price)=>{
+        return partialSum + price
+    }, 0)
+    return sum1;
+}
+console.log(sum(totalPrices));

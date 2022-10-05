@@ -168,7 +168,7 @@
         <div class="calculator-section">
             <form class="calculator__form">
                 <label>
-                    <input  class="calculator__form--input" type="number" name="products" placeholder="Products quantity" min="1">
+                    <input  id='productsquantity' class="calculator__form--input" type="number" name="products" placeholder="Products quantity" min="1">
                 </label>
                 <label>
                     <input  class="calculator__form--input" type="number" name="orders" placeholder="Estimated orders in month" min="1">
@@ -201,12 +201,12 @@
                 </div>
             </form>
             <section class="calculator__calculatedforms">
-                <div class="calculator__calculatedforms--item" id="products">
+                <div class="calculator__calculatedforms--item notvisible" id="products">
                     <p>Products</p>
                     <p></p>
                     <p><strong></strong></p>
                 </div>
-                <div class="calculator__calculatedforms--item" id="orders">
+                <div class="calculator__calculatedforms--item notvisible" id="orders">
                     <p>Orders</p>
                     <p></p>
                     <p><strong></strong></p>
