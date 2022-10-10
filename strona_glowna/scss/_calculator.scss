@@ -17,6 +17,9 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      @media(max-width: 900px){
+        flex-direction: column;
+      }
       .calculator__form {
 
         .calculator__form--select, .calculator__form--input{
@@ -98,6 +101,9 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        @media(max-width: 900px){
+          align-items: center;
+        }
         .calculator__calculatedforms--item {
           background-color: $color-green;
           color: $color-white;

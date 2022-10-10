@@ -1106,6 +1106,11 @@ textarea {
   flex-direction: row;
   justify-content: space-between;
 }
+@media (max-width: 900px) {
+  .calculator .container__calculator .calculator-section {
+    flex-direction: column;
+  }
+}
 .calculator .container__calculator .calculator-section .calculator__form .calculator__form--select, .calculator .container__calculator .calculator-section .calculator__form .calculator__form--input {
   box-sizing: border-box;
   background-color: #FFFFFF;
@@ -1181,6 +1186,11 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+@media (max-width: 900px) {
+  .calculator .container__calculator .calculator-section .calculator__calculatedforms {
+    align-items: center;
+  }
 }
 .calculator .container__calculator .calculator-section .calculator__calculatedforms .calculator__calculatedforms--item {
   background-color: #55DFB4;

@@ -1,7 +1,38 @@
-'use strict';
-const totalPrices = [5, 6, 8 ];
-console.log(totalPrices);
-const prices = {
+//ceny w niebieskich div
+const productsPrice = document.querySelector('.products-price');
+const ordersPrice = document.querySelector('.orders-price');
+const packagePrice = document.querySelector('.package-price');
+const accountingPrice = document.querySelector('.accounting-price');
+const terminalPrice = document.querySelector('.terminal-price');
+const summary = document.querySelector('#summary');
+const divSummary = document.querySelector('.calculator__summary')
+//działania na inputach
+const productsAction = document.querySelector('.products-action');
+const ordersAction = document.querySelector('.orders-action');
+//niebieskie div
+const divProducts = document.querySelector('#div-products');
+const divOrders = document.querySelector('#div-orders');
+const divPackage = document.querySelector('#div-package');
+const divAccounting = document.querySelector('#div-accounting');
+const divTerminal = document.querySelector('#div-terminal');
+const divCheckBoxes = document.querySelectorAll('.checkboxes');
+//inputs
+const inputProducts = document.querySelector('#productsquantity');
+const inputOrders = document.querySelector('#inputorders');
+//checkbox
+const checkboxes = document.querySelectorAll('.calculator__checkbox--newsquare');
+const checkBoxAccounting = document.querySelector('.calculator__checkbox--newsquare');
+const checkboxTerminal = document.querySelector('.checkbox-rental .calculator__checkbox--newsquare');
+//select
+const select = document.querySelector('.calculator__form--select');
+const list = select.querySelector('.select-ul');
+const p = select.querySelector('p');
+const typeOfPackage = document.querySelector('.type-of-package');
+
+console.log(productsPrice,ordersPrice,packagePrice, accountingPrice,terminalPrice);
+
+function Calculator(){
+this.prices = {
     products: 0.5,
     orders: 0.25,
     package: {
@@ -12,102 +43,86 @@ const prices = {
     accounting: 35,
     terminal: 50
     }
+    this.updateSummary();
+}
 
 
-//products
-const products = document.querySelector('#products');
-const productQuantityInput = document.querySelector('#productsquantity');
-const quantityProduct = products.children.item(1);
-const quantityProductTotal = products.children.item(2);
-const changeInput=()=>{
-    quantityProduct.textContent = productQuantityInput.value;
-    quantityProductTotal.textContent = parseFloat(productQuantityInput.value ) * parseFloat(prices.products);
-
-    if (productQuantityInput.value.length>0){
-        products.classList.remove('notvisible')
-    } else {
-        products.classList.add('notvisible')
+Calculator.prototype.updateSummary = function (){
+    const priceofProducts = Number(productsPrice.textContent);
+    const priceofOrders = Number(ordersPrice.textContent);
+    const priceofPackage = Number(packagePrice.textContent);
+    const priceofAccounting = Number(accountingPrice.textContent);
+    const priceofTerminal = Number(terminalPrice.textContent);
+    console.log(typeof priceofProducts);
+    const summaryArray = [priceofProducts, priceofOrders, priceofPackage, priceofAccounting, priceofTerminal]
+    const summaryPrice = summaryArray.reduce((partialSum, price)=>{
+        return partialSum + price;
+    },0)
+   console.log(summaryPrice);
+    summary.textContent = summaryPrice;
+    if(summary.textContent!=='0'){
+        divSummary.classList.remove('notvisible');
     }
 }
-productQuantityInput.addEventListener('change', changeInput)
-//orders
-const orders = document.querySelector('#orders');
-const quantityOrder = orders.children.item(1);
-const quantityOrderTotal = orders.children.item(2);
-const ordersInput = document.querySelector('.calculator__form').children.item(1).firstElementChild;
-const changeOrder=()=>{
-    quantityOrder.textContent = ordersInput.value;
-    quantityOrderTotal.textContent = parseFloat(quantityOrder.textContent)*parseFloat(prices.orders)
-    totalPrices.push(parseFloat(quantityOrderTotal.textContent));
-    if (ordersInput.value.length>0){
-        orders.classList.remove('notvisible')
-    } else {
-        orders.classList.add('notvisible')
+const newCalculator = new Calculator();
+//INPUTS
+const eventInputProducts =()=>{
+    productsAction.innerHTML = `${inputProducts.value} * $ ${newCalculator.prices.products}`;
+    productsPrice.innerHTML = ` ${inputProducts.value * newCalculator.prices.products}`;
+    if(divProducts.classList.contains('notvisible')){
+        divProducts.classList.remove('notvisible');
+
     }
+    newCalculator.updateSummary()
 }
-ordersInput.addEventListener('change', changeOrder)
-const packages = document.querySelector('#package');
-const accounting = document.querySelector('#accounting');
-const terminal = document.querySelector('#terminal');
-console.log(products);
-console.log(orders);
-console.log(packages);
-console.log(accounting);
-console.log(terminal);
-
-
-
-console.log(ordersInput);
-
-//select
-const select = document.querySelector('.calculator__form--select')
-const list = select.querySelector('.select-ul');
-const p = select.querySelector('p');
-const typeOfPackage = document.querySelector('.type-of-package');
-const priceOfPackage = document.querySelector('.package-price strong');
-function handleClick(event){
+const eventInputOrders =() =>{
+    ordersAction.innerHTML = `${inputOrders.value} * $ ${newCalculator.prices.orders}`;
+    ordersPrice.innerHTML = ` ${inputOrders.value * newCalculator.prices.orders}`;
+    if(divOrders.classList.contains('notvisible')){
+        divOrders.classList.remove('notvisible');
+    }
+    newCalculator.updateSummary()
+}
+inputProducts.addEventListener('change', eventInputProducts);
+inputOrders.addEventListener('change', eventInputOrders);
+//SELECT
+const eventSelect=(event)=>{
     list.classList.toggle('notactive')
     p.textContent=event.target.textContent;
-    p.textContent!=="Choose package"?packages.classList.remove('notvisible'): null;
+    p.textContent!=="Choose package"?divPackage.classList.remove('notvisible'): null;
     typeOfPackage.textContent=event.target.textContent;
-    if( p.textContent === 'Basic'){
-        totalPrices.push(prices.package.basic)
-    } else if (p.textContent === "Professional"){
-        totalPrices.push(prices.package.professional)
-    } else if(p.textContent === "Premium"){
-        totalPrices.push(prices.package.premium)
-    }
     if(typeOfPackage.textContent==='Basic'){
-        priceOfPackage.textContent = prices.package.basic
+        packagePrice.innerHTML = newCalculator.prices.package.basic
     } else if(typeOfPackage.textContent==="Professional"){
-        priceOfPackage.textContent = prices.package.professional
+        packagePrice.innerHTML  = newCalculator.prices.package.professional
     } else if(typeOfPackage.textContent==="Premium"){
-        priceOfPackage.textContent = prices.package.premium
+        packagePrice.innerHTML  = newCalculator.prices.package.premium
     }
+    newCalculator.updateSummary()
+}
+select.addEventListener('click', eventSelect)
+//CHECKBOXY
+const eventCheckboxAccounting = () =>{
+        if (divAccounting.classList.contains('notvisible')) {
+            divAccounting.classList.remove('notvisible');
+            accountingPrice.innerHTML = newCalculator.prices.accounting;
+        } else {
+           divAccounting.classList.add('notvisible');
+           accountingPrice.innerHTML = 0;
+}
+newCalculator.updateSummary()
+}
+const eventCheckboxTerminal = () =>{
+    if (divTerminal.classList.contains('notvisible')) {
+        divTerminal.classList.remove('notvisible');
+        terminalPrice.innerHTML = newCalculator.prices.terminal;
+    } else {
+        divTerminal.classList.add('notvisible');
+        terminalPrice.innerHTML = 0;
+    }
+newCalculator.updateSummary()
+}
+checkBoxAccounting.addEventListener('click', eventCheckboxAccounting);
+checkboxTerminal.addEventListener('click', eventCheckboxTerminal);
 
-}
-select.addEventListener('click', handleClick);
 
-//checkbox
-const checkboxAccounting = document.querySelector('.calculator__checkbox--newsquare');
-const checkboxTerminal = document.querySelector('.checkbox-rental .calculator__checkbox--newsquare')
-console.log(checkboxAccounting);
-const handleCLickCheckbox1=()=>{
-    accounting.classList.contains('notvisible')?accounting.classList.remove('notvisible'):accounting.classList.add('notvisible');
-}
-const handleClickCheckbox2=()=>{
-    terminal.classList.contains('notvisible')?terminal.classList.remove('notvisible'):terminal.classList.add('notvisible');
-}
-checkboxAccounting.addEventListener('click', handleCLickCheckbox1);
-checkboxTerminal.addEventListener('click', handleClickCheckbox2);
-
-//summary
-const calculatorSummary =document.querySelector(".calculator__summary");
-const summary = calculatorSummary.children.item(1)
-const sum =(array) => {
-    const sum1 = array.reduce((partialSum, price)=>{
-        return partialSum + price
-    }, 0)
-    return sum1;
-}
-console.log(sum(totalPrices));
